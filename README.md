@@ -4,7 +4,7 @@ A small and ultra efficient C++ 20 command-line option parser.
 
 This library makes heavy use of `std::string_view` to point directly into original command-line argument strings, so no heap allocations are made during parsing except for the `std::unordered_map` and `std::vector` used to store the parsed options and arguments respectively.
 
-This library consists of only a header and a single source file, so you can just copy them into your project and start using it right away, or build it as a CMake submodule and link against it.
+This library consists of only a header and a single source file. To use it, simply copy `OptionParser.hpp` and `OptionParser.cpp` into your project, or build the library with CMake and link it to your project (see below for details).
 
 ## Examples 
 
@@ -102,6 +102,23 @@ int WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     auto cmdLine = CommandLine::Parse(GetCommandLineW(), options);
     // ...
 }
+```
+
+## CMake
+
+The simplest way to add this library to your CMake project is to use `FetchContent` like so:
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    CppOptionParser
+    GIT_REPOSITORY https://codeberg.org/petelilley/CppOptionParser.git
+    GIT_TAG        main
+)
+FetchContent_MakeAvailable(CppOptionParser)
+
+target_link_libraries(${PROJECT_NAME} OptionParser)
 ```
 
 ## License
