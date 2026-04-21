@@ -12,6 +12,8 @@ CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
 
+[Bb]uild*/
+
 # ---> C++
 # Prerequisites
 *.d
@@ -46,3 +48,5 @@ CMakeUserPresets.json
 *.out
 *.app
 
+# Clangd
+.cache/
